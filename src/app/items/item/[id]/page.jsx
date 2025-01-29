@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Meal Details | Meals Cafe",
+  description: "Information of single meal",
+};
+
 export default async function Item({ params }) {
   const { id } = await params;
   const response = await fetch(
@@ -25,14 +30,14 @@ export default async function Item({ params }) {
             Meal: {meal?.strMeal}
           </h2>
           <div className="flex md:flex-row flex-col justify-between md:items-center gap-3">
-            <p className="text-gray-300 font-bold flex gap-2 items-center">
+            <p className="font-bold flex gap-2 items-center">
               Category:{" "}
               <span className="px-4 py-1 border border-gray-300 rounded-md">
                 {meal?.strCategory}
               </span>
             </p>
 
-            <p className="text-gray-300 font-bold flex gap-2 items-center">
+            <p className="font-bold flex gap-2 items-center">
               Area:{" "}
               <span className="px-4 py-1 border border-gray-300 rounded-md">
                 {meal?.strArea}

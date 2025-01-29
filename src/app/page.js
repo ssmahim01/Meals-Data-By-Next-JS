@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Home | Meals Cafe",
+  description: "Home page of the Cafe",
+};
+
 export async function fetchMealsData() {
   const response = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=b");
   const data = await response.json();
