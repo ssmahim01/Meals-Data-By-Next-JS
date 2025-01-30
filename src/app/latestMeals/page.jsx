@@ -1,21 +1,20 @@
-"use client"
 import Link from "next/link";
 
 export async function getMeals() {
-  const response = await fetch("https://meals-cafe.vercel.app/api/meals");
+  const response = await fetch("http://localhost:3000/api/meals");
   const data = await response.json();
   return data;
 }
 
 export default async function LatestMeals() {
   const mealsData = await getMeals();
-  const meals = mealsData.findMeal;
+  const meals = await mealsData?.findMeal;
 
   return (
     <div className="py-10 lg:w-4/5 w-11/12 mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
       {meals.map((meal) => (
         <div
-          key={meal._id}
+          key={meal?._id}
           className="p-4 border border-gray-300 rounded-xl hover:scale-105 hover:transition-transform duration-300"
         >
           <figure className="lg:h-60 h-52">
