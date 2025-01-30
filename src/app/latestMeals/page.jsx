@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export async function getMeals() {
-  const response = await fetch("http://localhost:3000/api/meals");
+  const response = await fetch("https://meals-cafe.vercel.app/api/meals");
   const data = await response.json();
   return data;
 }

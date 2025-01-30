@@ -2,7 +2,7 @@ export default async function singleMeal({params}) {
   const {id} = await params;
   // console.log(id);
   const response = await fetch(
-    `http://localhost:3000/api/singleMeal/${id}`);
+    `https://meals-cafe.vercel.app/api/singleMeal/${id}`);
   const data = await response.json();
   console.log(data);
 

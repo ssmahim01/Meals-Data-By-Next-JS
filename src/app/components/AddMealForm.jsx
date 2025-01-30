@@ -25,7 +25,7 @@ export default function AddMealForm() {
         }
         // console.log(mealData);
 
-        const response = await fetch("http://localhost:3000/api/meals", {
+        const response = await fetch("https://meals-cafe.vercel.app/api/meals", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
