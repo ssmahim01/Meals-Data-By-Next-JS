@@ -1,8 +1,12 @@
 "use client"
-
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { useRouter } from "next/navigation";
 
-export default function AddMealForm() {
+export default async function AddMealForm() {
+  const {getUser} = getKindeServerSession();
+  const user = await getUser();
+  const userName = `${user?.given_name} ${user?.family_name}`;
+  const userEmail = `${user?.email}`;
     const router = useRouter();
 
     const handleAddMeal = async(event) => {
@@ -12,8 +16,6 @@ export default function AddMealForm() {
         const mealImage = form.mealImage.value;
         const description = form.description.value;
         const category = form.category.value;
-        const userName = form.name.value;
-        const userEmail = form.email.value;
 
         const mealData = {
             mealName,
@@ -108,12 +110,12 @@ export default function AddMealForm() {
                   className="input input-bordered font-medium *:font-semibold"
                 >
                   <option value="">Select A Category</option>
-                  <option value="Action">Chicken</option>
-                  <option value="RPG">Pizza</option>
-                  <option value="Adventure">Burger</option>
-                  <option value="Battle">Sandwich</option>
-                  <option value="Battle Royale">Curry</option>
-                  <option value="Sports">Biryani</option>
+                  <option value="Chicken">Chicken</option>
+                  <option value="Pizza">Pizza</option>
+                  <option value="Burger">Burger</option>
+                  <option value="Sandwich">Sandwich</option>
+                  <option value="Curry">Curry</option>
+                  <option value="Biryani">Biryani</option>
                 </select>
               </div>
             </div>
@@ -126,8 +128,8 @@ export default function AddMealForm() {
                 <input
                   type="text"
                   name="name"
-                //   defaultValue={displayName}
-                //   readOnly
+                  defaultValue={userName}
+                  readOnly
                   className="input input-bordered font-medium"
                 />
               </div>
@@ -139,8 +141,8 @@ export default function AddMealForm() {
                 <input
                   type="email"
                   name="email"
-                //   defaultValue={email}
-                //   readOnly
+                  defaultValue={userEmail}
+                  readOnly
                   className="input input-bordered font-medium"
                 />
               </div>
