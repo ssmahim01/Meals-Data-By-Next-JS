@@ -10,7 +10,7 @@ export async function GET(req, { params }) {
     try {
         const db = dbConnect("meals");
         const query = { _id: new ObjectId(id) };
-        console.log(query);
+        // console.log(query);
         const findResult = await db.findOne(query);
 
         if (!findResult) {
