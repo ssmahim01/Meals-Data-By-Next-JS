@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Login from "./Login"
 
 export default function Navbar() {
   return (
@@ -13,7 +12,6 @@ export default function Navbar() {
                 <Link className="px-4 py-1 rounded-md hover:bg-gray-100 hover:text-gray-800 border border-gray-300 font-bold" href="/addMeal">Add Meal</Link>
                 <Link className="px-4 py-1 rounded-md hover:bg-gray-100 hover:text-gray-800 border border-gray-300 font-bold" href="/latestMeals">Latest Meals</Link>
                
-               <Login />
             </div>
         </div>
     </div>

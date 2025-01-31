@@ -1,7 +1,12 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Latest Meals | Meals Cafe",
+  description: "All Latest Meals From Posted Meals",
+};
+
 export async function getMeals() {
-  const response = await fetch("https://meals-cafe.vercel.app/api/meals");
+  const response = await fetch("http://localhost:3000/api/meals");
   const data = await response.json();
   return data;
 }
