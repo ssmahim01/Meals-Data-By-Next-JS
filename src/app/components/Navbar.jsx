@@ -30,7 +30,7 @@ export default async function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm space-y-4 dropdown-content bg-base-100 rounded-box z-[10] mt-3 w-80 p-4 shadow"
+            className="menu menu-sm space-y-4 dropdown-content bg-base-100 bg-opacity-40 border border-gray-300 rounded-box z-[10] mt-3 w-80 p-4 shadow"
           >
             <div className="flex flex-col gap-2">
             <p className="text-xl font-bold">{user?.given_name} {user?.family_name}</p>
