@@ -8,7 +8,7 @@ export const metadata = {
 export default async function singleMeal({ params }) {
   const { id } = await params;
   // console.log(id);
-  const response = await fetch(`http://localhost:3000/api/singleMeal/${id}`);
+  const response = await fetch(`https://meals-cafe.vercel.app/api/singleMeal/${id}`);
   const meal = await response.json();
   // console.log(meal);
 
