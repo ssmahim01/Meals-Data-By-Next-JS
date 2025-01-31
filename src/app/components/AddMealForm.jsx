@@ -1,13 +1,24 @@
 "use client"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default async function AddMealForm() {
-  const {getUser} = getKindeServerSession();
-  const user = await getUser();
-  const userName = `${user?.given_name} ${user?.family_name}`;
-  const userEmail = `${user?.email}`;
-    const router = useRouter();
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    async function fetchUser() {
+      const { getUser } = getKindeServerSession();
+      const user = await getUser();
+      if (user) {
+        setUserName(`${user?.given_name} ${user?.family_name}`);
+        setUserEmail(user?.email);
+      }
+    }
+    fetchUser();
+  }, []);
 
     const handleAddMeal = async(event) => {
         event.preventDefault();
@@ -128,7 +139,7 @@ export default async function AddMealForm() {
                 <input
                   type="text"
                   name="name"
-                  defaultValue={userName}
+                  value={userName}
                   readOnly
                   className="input input-bordered font-medium"
                 />
@@ -141,7 +152,7 @@ export default async function AddMealForm() {
                 <input
                   type="email"
                   name="email"
-                  defaultValue={userEmail}
+                  value={userEmail}
                   readOnly
                   className="input input-bordered font-medium"
                 />
